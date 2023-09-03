@@ -106,13 +106,17 @@
         }
 
         function deleteData(){
-            remove(ref(db, "Tasks/"+localStorage.getItem('uid')+"/"+delTask.value))
-            .then(() => {
-                InsertData();
-            })
-            .catch((e) => {
-                alert("Error Marking your task done, Please once check with the spelling");
-            })
+            if(delTask.value != ""){
+                remove(ref(db, "Tasks/"+localStorage.getItem('uid')+"/"+delTask.value))
+                .then(() => {
+                    InsertData();
+                })
+                .catch((e) => {
+                    alert("Error Marking your task done, Please once check with the spelling");
+                })
+            } else{
+                alert("You haven't entered any Task Details!");
+            }
         }
 
         delBut.addEventListener('click', deleteData);
