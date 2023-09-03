@@ -10,7 +10,7 @@
         <nav>
             <h1>TODO LIST</h1>
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="login.html">HOME</a></li>
                 <li><a href="addTask.html">ADD TASKS</a></li>
                 <li><a href="#">DONE TASKS</a></li>
                 <li><a href="#">ABOUT</a></li>
@@ -80,7 +80,7 @@
         }
 
         function GetDataRealtime(){
-            const dbRef = ref(db, "DoneTasks");
+            const dbRef = ref(db, "DoneTasks/"+localStorage.getItem('uid'));
 
             onValue(dbRef, (snapshot) => {
                 var Tasks = [];
@@ -93,7 +93,7 @@
         }
 
         function InsertData(){
-            set(ref(db, "DoneTasks/"+delTask.value), {
+            set(ref(db, "DoneTasks/"+localStorage.getItem('uid')+"/"+delTask.value), {
                 Task: delTask.value
             })
             .then(() => {
@@ -106,7 +106,7 @@
         }
 
         function deleteData(){
-            remove(ref(db, "Tasks/"+delTask.value))
+            remove(ref(db, "Tasks/"+localStorage.getItem('uid')+"/"+delTask.value))
             .then(() => {
                 InsertData();
             })
@@ -118,7 +118,7 @@
         delBut.addEventListener('click', deleteData);
 
         window.onload = GetDataRealtime;
-
+        
 
       </script>
 </body>

@@ -10,7 +10,7 @@
         <nav>
             <h1>TODO LIST</h1>
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="login.html">HOME</a></li>
                 <li><a href="#">ADD TASKS</a></li>
                 <li><a href="doneTask.html">DONE TASKS</a></li>
                 <li><a href="#">ABOUT</a></li>
@@ -59,7 +59,7 @@
 
 
         function InsertData(){
-            set(ref(db, "Tasks/"+task.value), {
+            set(ref(db, "Tasks/"+localStorage.getItem('uid')+"/"+task.value), {
                 Task: task.value
             })
             .then(() => {
