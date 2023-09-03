@@ -87,6 +87,7 @@
         })
         .then(() => {
             alert("User Created Successfully!");
+            window.location = 'login.html';
         })
         .catch((e) => {
             alert("Error Adding User");
@@ -102,7 +103,6 @@
             // Signed in 
             const user = userCredential.user;
             InsertData(user.uid, username);
-            window.location = "login.html";
             // ...
         })
         .catch((error) => {
